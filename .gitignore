@@ -1,0 +1,45 @@
+# =========================
+# 📊 DATASETS (IGNORE ALL)
+# =========================
+
+*.csv
+
+# common dataset folders
+**/data/
+**/Data/
+**/training_set/
+**/test_set/
+**/resized_data/
+
+# (optional explicit folders from your project)
+Facial_Detection/data/
+Facial_Emotion_Detection/Data/
+Numpy_NN/data/
+
+# =========================
+# 🤖 MODEL FILES (VERY LARGE)
+# =========================
+
+*.pth
+*.pt
+
+# =========================
+# 📦 PARTIAL / DOWNLOADED FILES
+# =========================
+
+*.part
+*.zip
+
+# =========================
+# 🐍 PYTHON CACHE / ENV
+# =========================
+
+__pycache__/
+*.pyc
+.env
+venv/
+
+# =========================
+# (KEEP NOTEBOOKS + PY FILES)
+# =========================
+# .ipynb and .py are NOT ignored
