@@ -17,6 +17,8 @@ class LinearClassifier(object):
         reg=1e-5,
         num_iters=100,
         batch_size=200,
+        lr_decay=None,
+        decay_interval=None,
         verbose=False
     ):
         num_train, dim = X.shape
@@ -33,19 +35,19 @@ class LinearClassifier(object):
 
             X_batch = X[np.random.choice(num_train, batch_size, replace=False)]
             y_batch = y[np.random.choice(num_train, batch_size, replace=False)]
-            # batch_idx = np.random.choice(num_train, batch_size, replace=False)
-            # X_batch = X[batch_idx]
-            # y_batch = y[batch_idx]
-            
-            # loss, dW = softmax_loss_vectorized(W, X_batch, y_batch, reg)
             
             loss, grad = self.loss(X_batch, y_batch, reg)
             loss_history.append(loss)
 
             self.W -= learning_rate * grad
 
+            # Verbose=True will print loss every 100 iterations
             if verbose and it % 100 == 0:
                 print("iteration %d / %d: loss %f" % (it, num_iters, loss))
+
+            # Learning rate decay
+            if lr_decay is not None and it % decay_interval == 0:
+                learning_rate *= lr_decay
         
         return loss_history
     
